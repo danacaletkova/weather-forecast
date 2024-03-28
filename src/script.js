@@ -5,6 +5,21 @@ function refreshWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let currentTemperature = response.data.temperature.current;
   temperatureElement.innerHTML = Math.round(currentTemperature);
+
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.condition.description;
+
+  let feelsLikeElement = document.querySelector("#feels-like");
+  let feelsLike = Math.round(response.data.temperature.feels_like);
+  feelsLikeElement.innerHTML = `Feels like: ${feelsLike} °C`;
+
+  let humidityElement = document.querySelector("#humidity");
+  let humidity = response.data.temperature.humidity;
+  humidityElement.innerHTML = `Humidity: ${humidity} %`;
+
+  let windElement = document.querySelector("#wind");
+  let wind = Math.round(response.data.wind.speed * 3.6);
+  windElement.innerHTML = `Wind speed: ${wind} km/h`;
 }
 
 function searchCity(city) {
