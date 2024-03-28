@@ -4,12 +4,13 @@ html {
 
 body {
   background: linear-gradient(
-    162deg,
-    rgba(223, 223, 211, 1) 0%,
-    rgba(161, 202, 210, 1) 94%
+    150deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(222, 243, 240, 1) 100%
   );
   background-repeat: no-repeat;
   font-family: "Overpass", sans-serif;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .search-form,
@@ -29,7 +30,7 @@ body {
 
 .search-form-input {
   background-color: #fff;
-  border: 1px solid #34a0a4;
+  border: 1px solid #00a58e;
   border-radius: 5px;
   width: 80%;
   font-size: 15px;
@@ -37,7 +38,7 @@ body {
 }
 
 .search-form-button {
-  background: #34a0a4;
+  background: #00a58e;
   color: white;
   padding: 15px 30px;
   border: none;
@@ -47,54 +48,46 @@ body {
 }
 
 .search-form-button:hover {
-  background: #1a759f;
+  background: #009580;
 }
 
 .current-weather-data {
-  color: rgba(0, 0, 0, 0.7);
   padding: 30px;
   display: flex;
   justify-content: space-between;
   text-align: left;
-  align-items: center;
 }
 
 .city {
-  color: #34a0a4;
+  color: #00a58e;
   font-size: 40px;
   font-weight: 900;
   line-height: 80px;
 }
 
-.date {
-  padding: 15px 0;
+.time {
+  padding: 10px 0;
+}
+.weather-description {
+  text-align: center;
+}
+
+.logo {
+  font-size: 100px;
 }
 
 .temp {
-  padding-top: 15px;
-}
-
-.temp-number {
-  color: #34a0a4;
-  font-size: 40px;
+  color: #00a58e;
   font-weight: 900;
+}
+.temp-number {
+  font-size: 40px;
+  line-height: 80px;
 }
 
 .temp-unit {
   position: relative;
-  top: -15px;
-}
-
-.logo {
-  text-align: center;
-}
-
-#logo {
-  font-size: 100px;
-}
-
-.details ul {
-  list-style: none;
+  bottom: 16px;
 }
 
 footer {
@@ -105,5 +98,5 @@ footer {
 }
 
 footer a {
-  color: #34a0a4;
+  color: #00a58e;
 }
