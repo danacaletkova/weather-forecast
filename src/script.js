@@ -49,6 +49,10 @@ function refreshWeather(response) {
   let windElement = document.querySelector("#wind");
   let wind = Math.round(response.data.wind.speed * 3.6);
   windElement.innerHTML = `Wind speed: ${wind} km/h`;
+
+  let iconElement = document.querySelector("#icon");
+  let icon = response.data.condition.icon_url;
+  iconElement.innerHTML = `<img src="${icon}" alt=""/>`;
 }
 
 function searchCity(city) {
