@@ -45,10 +45,12 @@ body {
   font-size: 16px;
   margin-left: 5px;
   border-radius: 5px;
+  transition: all 60ms ease-in-out;
 }
 
 .search-form-button:hover {
   background: #009580;
+  cursor: pointer;
 }
 
 .current-weather-data {
@@ -62,28 +64,41 @@ body {
   color: #00a58e;
   font-size: 40px;
   font-weight: 900;
-  line-height: 80px;
+  padding-bottom: 46px;
 }
 
-.time {
-  padding: 10px 0;
+.city-column {
+  flex-basis: 33%;
+  align-self: flex-end;
 }
-.weather-description {
+.weather-icon-column {
   text-align: center;
+  flex-basis: 33%;
+  align-self: flex-end;
+}
+.data-column {
+  flex-basis: 33%;
+  text-align: right;
+  align-self: flex-end;
 }
 
 .temp {
   color: #00a58e;
   font-weight: 900;
+  padding-bottom: 30px;
 }
 .temp-number {
   font-size: 40px;
-  line-height: 80px;
 }
 
 .temp-unit {
   position: relative;
   bottom: 16px;
+}
+
+.data {
+  color: #00a58e;
+  font-weight: bold;
 }
 
 footer {

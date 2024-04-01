@@ -40,15 +40,15 @@ function refreshWeather(response) {
 
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = Math.round(response.data.temperature.feels_like);
-  feelsLikeElement.innerHTML = `Feels like: ${feelsLike} °C`;
+  feelsLikeElement.innerHTML = `${feelsLike} °C`;
 
   let humidityElement = document.querySelector("#humidity");
   let humidity = response.data.temperature.humidity;
-  humidityElement.innerHTML = `Humidity: ${humidity} %`;
+  humidityElement.innerHTML = `${humidity} %`;
 
   let windElement = document.querySelector("#wind");
   let wind = Math.round(response.data.wind.speed * 3.6);
-  windElement.innerHTML = `Wind speed: ${wind} km/h`;
+  windElement.innerHTML = `${wind} km/h`;
 
   let iconElement = document.querySelector("#icon");
   let icon = response.data.condition.icon_url;
