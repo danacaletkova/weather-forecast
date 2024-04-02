@@ -14,7 +14,8 @@ body {
 }
 
 .search-form,
-.current-weather-data {
+.current-weather-container,
+.forecast-container {
   background-color: rgba(255, 255, 255, 0.7);
   margin: 5px auto;
   max-width: 600px;
@@ -53,7 +54,7 @@ body {
   cursor: pointer;
 }
 
-.current-weather-data {
+.current-weather-container {
   padding: 30px;
   display: flex;
   justify-content: space-between;
@@ -112,4 +113,27 @@ footer {
 
 footer a {
   color: #00a58e;
+}
+
+.forecast-container {
+  padding: 30px;
+  text-align: center;
+}
+
+.forecast-icon {
+  width: 80px;
+}
+
+.forecast-temp {
+  display: flex;
+  justify-content: space-around;
+  color: #00a58e;
+  font-size: smaller;
+}
+.forecast-temp-max {
+  font-weight: 700;
+}
+
+.forecast-temp-min {
+  font-weight: 300;
 }

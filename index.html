@@ -28,7 +28,7 @@
         </form>
       </header>
       <main>
-        <div class="current-weather-data">
+        <div class="current-weather-container">
           <div class="city-column">
             <div id="city" class="city"></div>
             <div class="time">
@@ -49,6 +49,22 @@
               <div>Feels like: <span class="data" id="feels-like"></span></div>
               <div>Humidity: <span class="data" id="humidity"></span></div>
               <div>Wind speed: <span class="data" id="wind"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="forecast-container">
+          <div class="row">
+            <div class="forecast">
+              <div class="forecast-day">Mon</div>
+              <img
+                class="forecast-icon"
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+                alt=""
+              />
+              <div class="forecast-temp">
+                <div class="forecast-temp-max">30°C</div>
+                <div class="forecast-temp-min">18°C</div>
+              </div>
             </div>
           </div>
         </div>
