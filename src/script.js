@@ -1,3 +1,8 @@
+function showError(typo) {
+  let errorMessage = document.querySelector("#error-message");
+  errorMessage.innerHTML = `<div class="error-msg">Uh-oh, that didn't work... did you really mean "${typo}"?</div>`;
+}
+
 function formatDate(date) {
   let weekdays = [
     "Sunday",
@@ -24,37 +29,45 @@ function formatDate(date) {
 }
 
 function refreshWeather(response) {
-  let currentTime = new Date(response.data.time * 1000);
-  let timeElement = document.querySelector("#time");
-  timeElement.innerHTML = formatDate(currentTime);
+  if (response.data.city != undefined) {
+    let errorMessage = document.querySelector("#error-message");
+    errorMessage.innerHTML = "";
 
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
+    let currentTime = new Date(response.data.time * 1000);
+    let timeElement = document.querySelector("#time");
+    timeElement.innerHTML = formatDate(currentTime);
 
-  let temperatureElement = document.querySelector("#temperature");
-  let currentTemperature = response.data.temperature.current;
-  temperatureElement.innerHTML = Math.round(currentTemperature);
+    let cityElement = document.querySelector("#city");
+    cityElement.innerHTML = response.data.city;
 
-  let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.condition.description;
+    let temperatureElement = document.querySelector("#temperature");
+    let currentTemperature = response.data.temperature.current;
+    temperatureElement.innerHTML = Math.round(currentTemperature);
 
-  let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = Math.round(response.data.temperature.feels_like);
-  feelsLikeElement.innerHTML = `${feelsLike} °C`;
+    let descriptionElement = document.querySelector("#description");
+    descriptionElement.innerHTML = response.data.condition.description;
 
-  let humidityElement = document.querySelector("#humidity");
-  let humidity = response.data.temperature.humidity;
-  humidityElement.innerHTML = `${humidity} %`;
+    let feelsLikeElement = document.querySelector("#feels-like");
+    let feelsLike = Math.round(response.data.temperature.feels_like);
+    feelsLikeElement.innerHTML = `${feelsLike} °C`;
 
-  let windElement = document.querySelector("#wind");
-  let wind = Math.round(response.data.wind.speed * 3.6);
-  windElement.innerHTML = `${wind} km/h`;
+    let humidityElement = document.querySelector("#humidity");
+    let humidity = response.data.temperature.humidity;
+    humidityElement.innerHTML = `${humidity} %`;
 
-  let iconElement = document.querySelector("#icon");
-  let icon = response.data.condition.icon_url;
-  iconElement.innerHTML = `<img src="${icon}" alt=""/>`;
+    let windElement = document.querySelector("#wind");
+    let wind = Math.round(response.data.wind.speed * 3.6);
+    windElement.innerHTML = `${wind} km/h`;
 
-  getForecast(response.data.city);
+    let iconElement = document.querySelector("#icon");
+    let icon = response.data.condition.icon_url;
+    iconElement.innerHTML = `<img src="${icon}" alt=""/>`;
+
+    getForecast(response.data.city);
+  } else {
+    let searchInput = document.querySelector("#search-form-input");
+    showError(searchInput.value);
+  }
 }
 
 function searchCity(city) {

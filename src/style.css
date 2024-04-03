@@ -120,7 +120,7 @@ footer a {
 
 .forecast-temp {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: #00a58e;
   font-size: smaller;
 }
@@ -142,4 +142,9 @@ footer a {
   box-shadow: 0 30px 50px rgba(65, 50, 100, 0.1);
   padding: 30px;
   text-align: center;
+}
+
+.error-msg {
+  text-align: center;
+  padding: 30px;
 }
