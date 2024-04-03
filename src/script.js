@@ -68,7 +68,39 @@ function handleSearch(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+          <div class="forecast-container">
+            <div class="row">
+              <div class="forecast">
+                <div class="forecast-day">${day}</div>
+                <img
+                  class="forecast-icon"
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+                  alt=""
+                />
+                <div class="forecast-temp">
+                  <div class="forecast-temp-max">30°C</div>
+                  <div class="forecast-temp-min">18°C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          `;
+  });
+
+  let weatherForecast = document.querySelector("#weather-forecast");
+  weatherForecast.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#city-search-form");
 searchFormElement.addEventListener("submit", handleSearch);
 
 searchCity("Perth");
+displayForecast();
