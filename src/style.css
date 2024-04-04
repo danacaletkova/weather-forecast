@@ -16,7 +16,8 @@ body {
 }
 
 .search-form,
-.current-weather-container {
+.current-weather-container,
+.weather-forecast-container {
   background-color: rgba(255, 255, 255, 0.7);
   margin: 5px auto;
   max-width: 600px;
@@ -63,13 +64,15 @@ body {
 
 .city-column {
   flex-basis: 33%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .weather-icon-column {
   flex-basis: 33%;
   text-align: center;
+  align-self: flex-end;
   font-weight: bold;
-  align-self: center;
 }
 .data-column {
   flex-basis: 33%;
@@ -83,12 +86,17 @@ body {
   color: #00a58e;
   font-size: 40px;
   font-weight: 900;
-  padding-bottom: 46px;
+  position: absolute;
+}
+
+.time {
+  align-self: flex-end;
 }
 
 .temp {
   color: #00a58e;
   font-weight: 900;
+  padding-bottom: 20px;
 }
 
 .temp-number {
@@ -137,11 +145,6 @@ footer a {
 .weather-forecast-container {
   display: flex;
   justify-content: space-around;
-  background-color: rgba(255, 255, 255, 0.7);
-  margin: 5px auto;
-  max-width: 600px;
-  border-radius: 15px;
-  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.1);
   padding: 30px;
   text-align: center;
 }
