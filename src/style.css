@@ -148,3 +148,8 @@ footer a {
   text-align: center;
   padding: 30px;
 }
+
+.error-opacity {
+  opacity: 0;
+  position: absolute;
+}

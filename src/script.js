@@ -1,6 +1,8 @@
 function showError(typo) {
   let errorMessage = document.querySelector("#error-message");
   errorMessage.innerHTML = `<div class="error-msg">Uh-oh, that didn't work... did you really mean "${typo}"?</div>`;
+  let mainElement = document.querySelector("main");
+  mainElement.classList.add("error-opacity");
 }
 
 function formatDate(date) {
@@ -32,6 +34,10 @@ function refreshWeather(response) {
   if (response.data.city != undefined) {
     let errorMessage = document.querySelector("#error-message");
     errorMessage.innerHTML = "";
+    
+    let mainElement = document.querySelector("main");
+    mainElement.classList.remove("error-opacity");
+
 
     let currentTime = new Date(response.data.time * 1000);
     let timeElement = document.querySelector("#time");
