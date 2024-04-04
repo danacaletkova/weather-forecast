@@ -57,6 +57,16 @@ body {
   cursor: pointer;
 }
 
+.error-msg {
+  text-align: center;
+  padding: 30px;
+}
+
+.error-opacity {
+  opacity: 0;
+  position: absolute;
+}
+
 .current-weather-container {
   padding: 30px;
 }
@@ -70,11 +80,15 @@ body {
   padding-bottom: 20px;
 }
 
+.temp-number {
+  position: relative;
+  left: 6px;
+}
+
 .temp-unit {
   font-size: 20px;
   position: relative;
   bottom: 14px;
-  right: 4px;
 }
 
 .bottom-line {
@@ -90,11 +104,11 @@ body {
 .description {
   flex-basis: 33%;
   text-align: center;
+  font-weight: 500;
 }
 
 .details {
   flex-basis: 33%;
-
   text-align: right;
 }
 
@@ -103,15 +117,11 @@ body {
   font-weight: bold;
 }
 
-footer {
-  text-align: center;
+.weather-forecast-container {
+  display: flex;
+  justify-content: space-around;
   padding: 30px;
-  font-size: small;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-footer a {
-  color: #00a58e;
+  text-align: center;
 }
 
 .forecast-icon {
@@ -124,6 +134,7 @@ footer a {
   color: #00a58e;
   font-size: smaller;
 }
+
 .forecast-temp-max {
   font-weight: 800;
 }
@@ -132,19 +143,13 @@ footer a {
   font-weight: 200;
 }
 
-.weather-forecast-container {
-  display: flex;
-  justify-content: space-around;
-  padding: 30px;
-  text-align: center;
-}
-
-.error-msg {
+footer {
   text-align: center;
   padding: 30px;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.6);
 }
 
-.error-opacity {
-  opacity: 0;
-  position: absolute;
+footer a {
+  color: #00a58e;
 }

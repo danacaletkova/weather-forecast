@@ -1,10 +1,3 @@
-function showError(typo) {
-  let errorMessage = document.querySelector("#error-message");
-  errorMessage.innerHTML = `<div class="error-msg">Uh-oh, that didn't work... did you really mean "${typo}"?</div>`;
-  let mainElement = document.querySelector("main");
-  mainElement.classList.add("error-opacity");
-}
-
 function formatDate(date) {
   let weekdays = [
     "Sunday",
@@ -28,6 +21,71 @@ function formatDate(date) {
   }
 
   return `${weekday}, ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+  let day = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day.getDay()];
+}
+
+function displayForecast(response) {
+  let maxElement = document.querySelector("#max");
+  let maxTemp = response.data.daily[0].temperature.maximum;
+  maxElement.innerHTML = `${Math.round(maxTemp)}°C`;
+
+  let minElement = document.querySelector("#min");
+  let minTemp = response.data.daily[0].temperature.minimum;
+  minElement.innerHTML = `${Math.round(minTemp)}°C`;
+
+  let forecastHtml = "";
+
+  response.data.daily.forEach(function (day, index) {
+    if (index > 0 && index < 7) {
+      forecastHtml =
+        forecastHtml +
+        `
+          <div class="forecast-container">
+            <div class="row">
+              <div class="forecast">
+                <div class="forecast-day">${formatDay(day.time)}</div>
+                <img
+                  class="forecast-icon"
+                  src="${day.condition.icon_url}"
+                  alt="${day.condition.description}"
+                />
+                <div class="forecast-temp">
+                  <div class="forecast-temp-max">${Math.round(
+                    day.temperature.maximum
+                  )}°C</div>
+                  <div class="forecast-temp-min">${Math.round(
+                    day.temperature.minimum
+                  )}°C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          `;
+    }
+  });
+
+  let weatherForecast = document.querySelector("#weather-forecast");
+  weatherForecast.innerHTML = forecastHtml;
+}
+
+function getForecast(city) {
+  let apiKey = "5o168182b8atd0a481fedf7024b43479";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function showError(typo) {
+  let errorMessage = document.querySelector("#error-message");
+  errorMessage.innerHTML = `<div class="error-msg">Uh-oh, that didn't work... did you really mean "${typo}"?</div>`;
+
+  let mainElement = document.querySelector("main");
+  mainElement.classList.add("error-opacity");
 }
 
 function refreshWeather(response) {
@@ -86,63 +144,6 @@ function handleSearch(event) {
   let searchInput = document.querySelector("#search-form-input");
 
   searchCity(searchInput.value);
-}
-
-function formatDay(timestamp) {
-  let day = new Date(timestamp * 1000);
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day.getDay()];
-}
-
-function getForecast(city) {
-  let apiKey = "5o168182b8atd0a481fedf7024b43479";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
-}
-
-function displayForecast(response) {
-  let maxElement = document.querySelector("#max");
-  let maxTemp = response.data.daily[0].temperature.maximum;
-  maxElement.innerHTML = `${Math.round(maxTemp)}°C`;
-
-  let minElement = document.querySelector("#min");
-  let minTemp = response.data.daily[0].temperature.minimum;
-  minElement.innerHTML = `${Math.round(minTemp)}°C`;
-
-  let forecastHtml = "";
-
-  response.data.daily.forEach(function (day, index) {
-    if (index > 0 && index < 7) {
-      forecastHtml =
-        forecastHtml +
-        `
-          <div class="forecast-container">
-            <div class="row">
-              <div class="forecast">
-                <div class="forecast-day">${formatDay(day.time)}</div>
-                <img
-                  class="forecast-icon"
-                  src="${day.condition.icon_url}"
-                  alt="${day.condition.description}"
-                />
-                <div class="forecast-temp">
-                  <div class="forecast-temp-max">${Math.round(
-                    day.temperature.maximum
-                  )}°C</div>
-                  <div class="forecast-temp-min">${Math.round(
-                    day.temperature.minimum
-                  )}°C</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          `;
-    }
-  });
-
-  let weatherForecast = document.querySelector("#weather-forecast");
-  weatherForecast.innerHTML = forecastHtml;
 }
 
 let searchFormElement = document.querySelector("#city-search-form");
