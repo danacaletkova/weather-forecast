@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  min-width: 700px;
+  min-width: 560px;
   background: linear-gradient(
     150deg,
     rgba(255, 255, 255, 1) 0%,
@@ -28,7 +28,8 @@ body {
 .search-form {
   margin-top: 60px;
   padding: 15px 30px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .search-form-input {
@@ -58,54 +59,43 @@ body {
 
 .current-weather-container {
   padding: 30px;
-  display: flex;
-  justify-content: space-between;
 }
 
-.city-column {
-  flex-basis: 33%;
+.top-line {
   display: flex;
   justify-content: space-between;
-}
-
-.weather-icon-column {
-  flex-basis: 33%;
-  text-align: center;
-  align-self: flex-end;
-  font-weight: bold;
-}
-.data-column {
-  flex-basis: 33%;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.city {
   color: #00a58e;
   font-size: 40px;
-  font-weight: 900;
-  position: absolute;
-}
-
-.time {
-  align-self: flex-end;
-}
-
-.temp {
-  color: #00a58e;
   font-weight: 900;
   padding-bottom: 20px;
 }
 
-.temp-number {
-  font-size: 40px;
+.temp-unit {
+  font-size: 20px;
+  position: relative;
+  bottom: 14px;
+  right: 4px;
 }
 
-.temp-unit {
-  position: relative;
-  bottom: 16px;
+.bottom-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.time {
+  flex-basis: 33%;
+}
+
+.description {
+  flex-basis: 33%;
+  text-align: center;
+}
+
+.details {
+  flex-basis: 33%;
+
+  text-align: right;
 }
 
 .data {

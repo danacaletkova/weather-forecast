@@ -30,21 +30,21 @@
       </header>
       <main>
         <div class="current-weather-container">
-          <div class="city-column">
-            <div id="city" class="city"></div>
+          <div class="top-line">
+            <div class="city" id="city"></div>
+            <div class="temp">
+              <span id="temperature" class="temp-number"></span>
+              <span class="temp-unit">°C</span>
+            </div>
+          </div>
+          <div class="bottom-line">
             <div class="time">
               Last updated:
               <div id="time" class="data"></div>
             </div>
-          </div>
-          <div class="weather-icon-column">
-            <div id="icon"></div>
-            <div id="description"></div>
-          </div>
-          <div class="data-column">
-            <div class="temp">
-              <span id="temperature" class="temp-number"></span>
-              <span class="temp-unit">°C</span>
+            <div class="description">
+              <div id="icon"></div>
+              <div id="description"></div>
             </div>
             <div class="details">
               <div>Feels like: <span class="data" id="feels-like"></span></div>
