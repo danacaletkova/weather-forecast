@@ -34,10 +34,9 @@ function refreshWeather(response) {
   if (response.data.city != undefined) {
     let errorMessage = document.querySelector("#error-message");
     errorMessage.innerHTML = "";
-    
+
     let mainElement = document.querySelector("main");
     mainElement.classList.remove("error-opacity");
-
 
     let currentTime = new Date(response.data.time * 1000);
     let timeElement = document.querySelector("#time");
@@ -55,7 +54,7 @@ function refreshWeather(response) {
 
     let feelsLikeElement = document.querySelector("#feels-like");
     let feelsLike = Math.round(response.data.temperature.feels_like);
-    feelsLikeElement.innerHTML = `${feelsLike} °C`;
+    feelsLikeElement.innerHTML = `${feelsLike}°C`;
 
     let humidityElement = document.querySelector("#humidity");
     let humidity = response.data.temperature.humidity;
@@ -103,10 +102,18 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
+  let maxElement = document.querySelector("#max");
+  let maxTemp = response.data.daily[0].temperature.maximum;
+  maxElement.innerHTML = `${Math.round(maxTemp)}°C`;
+
+  let minElement = document.querySelector("#min");
+  let minTemp = response.data.daily[0].temperature.minimum;
+  minElement.innerHTML = `${Math.round(minTemp)}°C`;
+
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
-    if (index < 6) {
+    if (index > 0 && index < 7) {
       forecastHtml =
         forecastHtml +
         `
